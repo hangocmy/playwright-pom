@@ -9,3 +9,6 @@
 
 # HTML Test Reports
   > `npx playwright show-report`
+
+# CI Integration
+  - [Github Actions - click here](https://github.com/hangocmy/playwright-tutorial/actions)
