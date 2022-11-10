@@ -1,14 +1,20 @@
-import { test, expect } from '@playwright/test';
+import { test, Page } from '@playwright/test';
 import { SignUp } from '../../pages/authentication-page';
 
-test.beforeEach(async ({ page}) => {
+let page: Page;
+
+test.beforeEach(async ({ browser }) => {
+  page = await browser.newPage();
   await page.goto('/');
 });
 
-test.describe.configure({ mode: 'parallel' });
+test.afterEach(async() => {
+  await page.close();
+});
+
 
 test.describe('Sign Up', () => {
-  test('Verify sign up error message', async({ page }) => {
+  test('Verify sign up error message', async() => {
     
     const signUp = new SignUp(page);
 
