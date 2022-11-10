@@ -13,13 +13,13 @@ import 'dotenv/config'
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 30 * 1000, //30 seconds
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 10000 //10 seconds
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -30,7 +30,7 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'list' : [['list'], ['html']],
+  reporter: process.env.CI ? [['list'], ['html']] : [['list'], ['html']],
   
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -60,12 +60,14 @@ const config: PlaywrightTestConfig = {
     //  },
     //},
 
-    //{
-    //  name: 'webkit',
-    //  use: {
-    //    ...devices['Desktop Safari'],
-    //  },
-    //},
+    {
+      name: 'webkit',
+      use: {
+        //...devices['Desktop Safari'],
+        browserName: "webkit",
+        viewport: { width: 1800, height: 900 },
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
