@@ -15,7 +15,7 @@ export class SignIn {
     this.userName = page.locator('#user_email_login');
     this.passWord = page.locator('#user_password');
     this.btnSignIn = page.locator('#user_submit');
-    this.errorMessageSignIn = page.locator("//input[@id='user_password']/../div[@class='error-msg']//span");
+    this.errorMessageSignIn = page.locator("//input[@id='user_password']/../div[@class='error-msg']//div//span");
   }
 
   async clickSignIn() {

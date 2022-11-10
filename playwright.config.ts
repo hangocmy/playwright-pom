@@ -13,13 +13,13 @@ import 'dotenv/config'
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 30 * 1000, //30 seconds
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 10000 //10 seconds
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -60,12 +60,14 @@ const config: PlaywrightTestConfig = {
     //  },
     //},
 
-    //{
-    //  name: 'webkit',
-    //  use: {
-    //    ...devices['Desktop Safari'],
-    //  },
-    //},
+    {
+      name: 'webkit',
+      use: {
+        //...devices['Desktop Safari'],
+        browserName: "webkit",
+        viewport: { width: 1800, height: 900 },
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
