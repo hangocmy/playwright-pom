@@ -20,7 +20,8 @@ test.describe('Sign Up', () => {
 
     await signUp.clickSignIn();
     await signUp.clickSignUp();
-    await signUp.enterSignUpInfo();
+    await signUp.typeSignUpInfo();
+    await signUp.clickSubmitAuthentication();
     await signUp.verifyErrorMessageSignUp('Please check the box to confirm acceptance of our Terms of Service and Privacy Policy ');
 
   });
