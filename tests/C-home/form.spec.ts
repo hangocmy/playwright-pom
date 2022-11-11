@@ -20,8 +20,7 @@ test.describe('Form live for team', async () => {
     const formDemo = new FormDemo(page); 
 
     formDemo.clickOnLiveForTeams();
-
-    expect(page).toHaveURL('/live-for-teams');
+    expect(page).toHaveURL('live-for-teams');
     
     formDemo.clickOnGetADemo();
     formDemo.enterInfoMissingCompanyName(user[0].fullname, user[0].email, user[0].message);
@@ -33,17 +32,12 @@ test.describe('Form live for team', async () => {
     const formDemo = new FormDemo(page); 
 
     formDemo.clickOnLiveForTeams();
-
     expect(page).toHaveURL('/live-for-teams');
     
     formDemo.clickOnGetADemo();
     formDemo.enterInfoMissingTextarea(user[0].fullname, user[0].email, user[0].company);
 
-    
-    expect(page).toHaveURL('/live-for-teams');
-    
-  
-    expect(formDemo.errorMessageTextarea).toContainText('please write a message');
+    await expect(formDemo.errorMessageTextarea).toContainText('please write a message');
   });
   
 

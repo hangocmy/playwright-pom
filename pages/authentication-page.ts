@@ -23,13 +23,15 @@ export class SignIn {
     await this.signIn.click();
   }
 
-  async enterSignInInfo() {
+  async typeSignInInfo() {
     await this.userName.waitFor({state: 'visible'});
     await this.userName.type('example1@example.com');
 
     await this.passWord.waitFor({state: 'visible'});
     await this.passWord.type('examplepassword');
+  }
 
+  async clickSubmitAuthentication() {
     await this.btnSignIn.waitFor({state: 'visible'});
     await this.btnSignIn.click();
   }
@@ -41,38 +43,30 @@ export class SignIn {
 }
 
 //Sign Up
-export class SignUp {
+export class SignUp extends SignIn {
   readonly page: Page;
-  readonly signIn: Locator;
   readonly signUp: Locator;
   readonly fullName: Locator;
   readonly eMail: Locator;
   readonly passWord: Locator;
-  readonly btnSignUp: Locator;
   readonly errorMessageSignUp: Locator;
 
   constructor(page: Page) {
-    this.page = page;
-    this.signIn = page.locator('//li[@class="sign-in-link hide-xs hide-sm"]//a[@title="Sign In"]');
+    super(page);
     this.signUp = page.locator('//form[@id="signin_signup_form"]//a[@class="sign-up-link hide-in-os-page"]');
     this.fullName = page.locator('#user_full_name');
     this.eMail = page.locator('#user_email_login');
     this.passWord = page.locator('#user_password');
-    this.btnSignUp = page.locator('#user_submit');
     this.errorMessageSignUp = page.locator('#bs-alert-text-id');
   }
 
-  async clickSignIn() {
-    await this.signIn.waitFor({state: 'visible'});
-    await this.signIn.click();
-  }
 
   async clickSignUp() {
     await this.signUp.waitFor({state: 'visible'});
     await this.signUp.click();
   }
 
-  async enterSignUpInfo() {
+  async typeSignUpInfo() {
     await this.fullName.waitFor({state: 'visible'});
     await this.fullName.type('Ha Ngoc My');
 
@@ -81,9 +75,6 @@ export class SignUp {
 
     await this.passWord.waitFor({state: 'visible'});
     await this.passWord.type('123456');
-
-    await this.btnSignUp.waitFor({state: 'visible'});
-    await this.btnSignUp.click();
   }
 
   async verifyErrorMessageSignUp(message: string) {

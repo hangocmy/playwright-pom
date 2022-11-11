@@ -19,7 +19,8 @@ test.describe('Sign In', () => {
 
     await signIn.clickSignIn();
     await expect(page).toHaveURL('/users/sign_in');
-    await signIn.enterSignInInfo();
+    await signIn.typeSignInInfo();
+    await signIn.clickSubmitAuthentication();
     await signIn.verifyErrorMessageSignIn('Invalid password');
 
   });
