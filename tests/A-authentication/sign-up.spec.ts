@@ -1,20 +1,20 @@
-import { test, Page } from '@playwright/test';
+import { test } from '@playwright/test';
 import { SignUp } from '../../pages/authentication-page';
 
-let page: Page;
+//let page: Page;
 
-test.beforeEach(async ({ browser }) => {
-  page = await browser.newPage();
+test.beforeEach(async ({ page  }) => {
+  //page = await browser.newPage();
   await page.goto('/');
 });
 
-test.afterEach(async() => {
+test.afterEach(async({ page }) => {
   await page.close();
 });
 
 
 test.describe('Sign Up', () => {
-  test('Verify sign up error message', async() => {
+  test('Verify sign up error message', async({ page }) => {
     
     const signUp = new SignUp(page);
 
