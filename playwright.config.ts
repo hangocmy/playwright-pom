@@ -60,14 +60,14 @@ const config: PlaywrightTestConfig = {
     //  },
     //},
 
-    {
-      name: 'webkit',
-      use: {
-        //...devices['Desktop Safari'],
-        browserName: "webkit",
-        viewport: { width: 1800, height: 900 },
-      },
-    },
+    //{
+    //  name: 'webkit',
+    //  use: {
+    //    //...devices['Desktop Safari'],
+    //    browserName: "webkit",
+    //    viewport: { width: 1800, height: 900 },
+    //  },
+    //},
 
     /* Test against mobile viewports. */
     // {
