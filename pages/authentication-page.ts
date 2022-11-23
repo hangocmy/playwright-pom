@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-//Sign In
+// ---------------------------------------------------------------//
 export class SignIn {
   readonly page: Page;
   readonly signIn: Locator;
@@ -42,7 +42,8 @@ export class SignIn {
   }
 }
 
-//Sign Up
+
+// ---------------------------------------------------------------//
 export class SignUp extends SignIn {
   readonly page: Page;
   readonly signUp: Locator;
@@ -59,7 +60,6 @@ export class SignUp extends SignIn {
     this.passWord = page.locator('#user_password');
     this.errorMessageSignUp = page.locator('#bs-alert-text-id');
   }
-
 
   async clickSignUp() {
     await this.signUp.waitFor({state: 'visible'});
@@ -81,5 +81,4 @@ export class SignUp extends SignIn {
     const errorMessageSignUp = await this.errorMessageSignUp.textContent();
     expect(errorMessageSignUp).toBe(message);
   }
-
 }
