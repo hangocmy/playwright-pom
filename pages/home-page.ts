@@ -1,5 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 
+// ---------------------------------------------------------------//
 export class HeaderMenu {
   readonly page: Page;
   readonly productsMenu: Locator;
@@ -25,9 +26,9 @@ export class HeaderMenu {
     await this.developersMenu.waitFor({state: 'visible'});
     await this.developersMenu.click();
   }
-
 }
 
+// ---------------------------------------------------------------//
 export class HomePage {
   readonly page: Page;
   readonly productCards: Locator;
@@ -41,7 +42,7 @@ export class HomePage {
 
 }
 
-
+// ---------------------------------------------------------------//
 export class FormDemo {
   readonly page: Page;
   readonly mnuLiveForTeams: Locator;
@@ -54,7 +55,6 @@ export class FormDemo {
   readonly errorMessageCompanyInput: Locator;
   readonly errorMessageTextarea: Locator;
   
-
   constructor(page: Page) {
     this.page = page;
     this.mnuLiveForTeams = page.locator('//ul[@class="horizontal-list product-menu"]//a[@title="Live for Teams"]');
@@ -78,7 +78,6 @@ export class FormDemo {
     await this.btnGetADemo.click();
   }
 
-
   async enterInfoMissingCompanyName(fullname: any, email: any, message: any) {
     await this.txtFullName.type(fullname);
     await this.txtEmail.type(email);
@@ -86,16 +85,10 @@ export class FormDemo {
     await this.btnSubmitForm.click();
   }
 
-
   async enterInfoMissingTextarea(fullname: any, email: any, company: any) {
     await this.txtFullName.type(fullname);
     await this.txtEmail.type(email);
     await this.txtCompanyName.type(company);
     await this.btnSubmitForm.click();
   }
-
-
-
-
-  
 }
