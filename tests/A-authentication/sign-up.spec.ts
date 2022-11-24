@@ -1,20 +1,19 @@
-import { test } from '@playwright/test';
+import { test, Page } from '@playwright/test';
 import { SignUp } from '../../pages/authentication-page';
 
-//let page: Page;
+let page: Page;
 
-test.beforeEach(async ({ page  }) => {
-  //page = await browser.newPage();
+test.beforeEach(async ({ browser }) => {
+  page = await browser.newPage();
   await page.goto('/');
 });
 
-test.afterEach(async({ page }) => {
+test.afterEach(async() => {
   await page.close();
 });
 
-
 test.describe('Sign Up', () => {
-  test('Verify sign up error message', async({ page }) => {
+  test('Verify sign up error message', async() => {
     
     const signUp = new SignUp(page);
 
@@ -23,6 +22,5 @@ test.describe('Sign Up', () => {
     await signUp.typeSignUpInfo();
     await signUp.clickSubmitAuthentication();
     await signUp.verifyErrorMessageSignUp('Please check the box to confirm acceptance of our Terms of Service and Privacy Policy ');
-
   });
 });
