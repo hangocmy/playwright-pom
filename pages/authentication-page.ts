@@ -45,7 +45,7 @@ export class SignIn {
 
 // ---------------------------------------------------------------//
 export class SignUp extends SignIn {
-  readonly page: Page;
+  //readonly page: Page;
   readonly signUp: Locator;
   readonly fullName: Locator;
   readonly eMail: Locator;
